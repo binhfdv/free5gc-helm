@@ -44,13 +44,13 @@ As documented in the Free5GC documentation:
 				e3cb8a67b490   kindest/node:v1.27.3   "/usr/local/bin/entr…"   11 minutes ago   Up 11 minutes                               kind-worker
         cub@labFormation:~/CNI$ sudo docker cp . 3013a5ca7d6f:/opt/cni/bin/
 				Successfully copied 78.4MB to 3013a5ca7d6f:/opt/cni/bin/
-				cub@labFormation:~/CNI$ sudo docker cp . e3cb8a67b490:/opt/cni/bin/
+	cub@labFormation:~/CNI$ sudo docker cp . e3cb8a67b490:/opt/cni/bin/
 				Successfully copied 78.4MB to e3cb8a67b490:/opt/cni/bin/
       ```
   * Install Multus CNI on the KinD cluster. Following the instructions from the multus-cni github repo.:
     ```
     git clone https://github.com/k8snetworkplumbingwg/multus-cni
-		cub@labFormation:~/multus-cni$ cat ./deployments/multus-daemonset-thick.yml | sudo kubectl apply -f -
+	cub@labFormation:~/multus-cni$ cat ./deployments/multus-daemonset-thick.yml | sudo kubectl apply -f -
 		customresourcedefinition.apiextensions.k8s.io/network-attachment-definitions.k8s.cni.cncf.io created
 		clusterrole.rbac.authorization.k8s.io/multus created
 		clusterrolebinding.rbac.authorization.k8s.io/multus created
@@ -94,7 +94,7 @@ As documented in the Free5GC documentation:
 			    gatewayIP: 172.18.0.0
 			    excludeIP: 172.18.0.0
     ```
-  * We also need to set up an IP@ compatible with the class to the UPF N6 interface. We need to edit the free5gc-upc helm chart value for the corresponding value:
+  * We also need to set up an IP@ compatible with the class to the UPF N6 interface. We need to edit the free5gc-upf helm chart value for the corresponding value:
     ```
      n6if:  # DN
 				    ipAddress: 172.18.0.22
@@ -129,7 +129,7 @@ As documented in the Free5GC documentation:
   * Creation of folder in the worker node
     ```
     cub@labFormation:~$ sudo docker exec -it e3cb8a67b490 /bin/bash
-			root@kind-worker:/# mkdir /home/kubedata
+	root@kind-worker:/# mkdir /home/kubedata
     ```
   * Applying the persistent volume creation
     ```
